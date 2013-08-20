@@ -47,6 +47,8 @@ context.addEventListener("start", function () {
     contraints: new THREE.Vector2(1, 0)
   });
 
+  this.mario.controls = this.controls;
+
 });
 
 context.addEventListener("frame", function (event) {
@@ -59,6 +61,12 @@ context.addEventListener("frame", function (event) {
   this.mario.update(event);
   this.booSpawner.update(event);
   score.innerHTML = "Score " + ~~this.clock.getElapsedTime();
+
+  // Dirty tricks to change keyboard layout
+  if (THREE.Input.isKeyDown("Z"))
+    this.controls.keyMapping = "azerty";
+  if (THREE.Input.isKeyDown("W"))
+    this.controls.keyMapping = "qwerty";
 
 });
 
