@@ -2,6 +2,7 @@
 ~function () {
 
 var context = new THREE.Context();
+var score = document.getElementById("score");
 
 // debug
 window.context = context;
@@ -57,6 +58,7 @@ context.addEventListener("frame", function (event) {
     return ;
   this.mario.update(event);
   this.booSpawner.update(event);
+  score.innerHTML = "Score " + ~~this.clock.getElapsedTime();
 });
 
 context.gameOver = function () {
@@ -65,8 +67,8 @@ context.gameOver = function () {
 
   // add 3D text
   var textMesh = new THREE.Mesh(
-    new THREE.TextGeometry( "GAME OVER", {
-      size: 30,
+    new THREE.TextGeometry( "YOUR SCORE IS " + ~~this.clock.getElapsedTime(), {
+      size: 20,
       height: 6,
       font: "pipe dream",
       extrudeMaterial: 1
@@ -117,7 +119,6 @@ context.gameOver = function () {
   this.controls.center = this.mario.mesh.position.clone();
   this.scene.remove(this.mario.mesh);
   this.booSpawner.clear();
-
 }
 
 context.start();
