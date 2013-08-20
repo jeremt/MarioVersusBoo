@@ -105,16 +105,19 @@ Mario.prototype.update = function (event) {
 }
 
 var _move = function (self) {
-  if (THREE.Input.isKeyPressed("W"))
-    self.anim.play("forward");
-  else if (THREE.Input.isKeyPressed("S"))
-    self.anim.play("backward");
-  else if (THREE.Input.isKeyPressed("Q"))
-    self.anim.play("left");
-  else if (THREE.Input.isKeyPressed("E"))
-    self.anim.play("right");
-  else if (!THREE.Input.isKeyPressed())
-    self.anim.play("idle");
+  if (self.controls) {
+    var t = self.controls.keyMap.translate;
+    if (THREE.Input.isKeyPressed(t.forward))
+      self.anim.play("forward");
+    else if (THREE.Input.isKeyPressed(t.backward))
+      self.anim.play("backward");
+    else if (THREE.Input.isKeyPressed(t.left))
+      self.anim.play("left");
+    else if (THREE.Input.isKeyPressed(t.right))
+      self.anim.play("right");
+    else if (!THREE.Input.isKeyPressed())
+      self.anim.play("idle");
+  }
 }
 
 var _lerp = function (dest, src, delta) {

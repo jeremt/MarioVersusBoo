@@ -1,4 +1,4 @@
 MarioVersusBoo
 ==============
 
-Try the game [here](https://github.io/jeremt/MarioVersusBoo) ;).
+Try the game [here](http://jeremt.github.io/MarioVersusBoo/) ;).

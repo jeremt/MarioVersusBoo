@@ -83,7 +83,8 @@ THREE.ThirdPersonControls.prototype.update = function (delta) {
   var rotateAngle = this.rotateSpeed * delta;
   
   // update translations from input.
-  var t = _keys[this.keyMapping].translate;
+  this.keyMap = _keys[this.keyMapping];
+  var t = this.keyMap.translate;
   if (THREE.Input.isKeyPressed(t.forward))
     this.target.translateZ(-moveDistance);
   if (THREE.Input.isKeyPressed(t.backward))
@@ -94,7 +95,7 @@ THREE.ThirdPersonControls.prototype.update = function (delta) {
     this.target.translateX(moveDistance); 
 
   // update rotations from input.
-  var r = _keys[this.keyMapping].rotate;
+  var r = this.keyMap.rotate;
   var rotation_matrix = new THREE.Matrix4().identity();
   if (this.contraints.x === 0) {
     if (THREE.Input.isKeyPressed(r.up))
